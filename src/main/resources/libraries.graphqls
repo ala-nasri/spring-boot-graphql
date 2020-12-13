@@ -1,0 +1,32 @@
+type Book {
+    id: ID!
+    title: String!
+    year: Int
+    category: String
+    author: Author!
+}
+
+type Author {
+    id: ID!
+    name: String!
+    books: [Book]!
+}
+
+type Library {
+	id: ID!
+	name: String!
+	adress: String
+	books: [Book]!
+}
+
+# The Root Query for the application
+type Query {
+    recentBooks(count: Int): [Book]!,
+    getAuthors: [Author]!,
+    getAuthor(id: ID!): Author!,
+}
+
+# The Root Mutation for the application
+type Mutation {
+    addBook(title: String!, year: Int, category: String, author: String!, libraries: [String]!) : Book!
+}
