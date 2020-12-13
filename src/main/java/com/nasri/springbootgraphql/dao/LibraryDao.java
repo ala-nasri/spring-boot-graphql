@@ -26,14 +26,18 @@ public class LibraryDao {
 	public LibraryDao() {
 		this.libraries = new ArrayList<>();
 		initLibraries();
-		
+
 		this.books = getBooksInternal();
-		
+
 		this.authors = getAuthorsInternal();
 	}
 
-	public List<Library> getLibraries() {
-		return libraries;
+	public List<Library> getLibraries(int count) {
+		return this.libraries.stream().limit(count).collect(Collectors.toList());
+	}
+
+	public Library getLibrary(Long id) {
+		return this.libraries.stream().collect(Collectors.toMap(Library::getId, Function.identity())).get(id);
 	}
 
 	public List<Book> recentBooks(int count) {

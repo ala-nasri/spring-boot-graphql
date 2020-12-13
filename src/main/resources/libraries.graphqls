@@ -21,9 +21,11 @@ type Library {
 
 # The Root Query for the application
 type Query {
-    recentBooks(count: Int): [Book]!,
+    recentBooks(count: Int!): [Book]!,
     getAuthors: [Author]!,
-    getAuthor(id: ID!): Author!,
+    getAuthor(id: ID!): Author!
+    getLibraries(count: Int): [Library]!,
+    getLibrary(id: ID!): Library!
 }
 
 # The Root Mutation for the application

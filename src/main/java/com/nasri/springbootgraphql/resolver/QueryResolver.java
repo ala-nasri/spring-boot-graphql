@@ -8,6 +8,7 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.nasri.springbootgraphql.dao.LibraryDao;
 import com.nasri.springbootgraphql.dto.Author;
 import com.nasri.springbootgraphql.dto.Book;
+import com.nasri.springbootgraphql.dto.Library;
 
 @Service
 public class QueryResolver implements GraphQLQueryResolver {
@@ -28,6 +29,14 @@ public class QueryResolver implements GraphQLQueryResolver {
 
 	public Author getAuthor(Long id) {
 		return libraryDao.getAuthor(id);
+	}
+	
+	public List<Library> getLibraries(int count){
+		return libraryDao.getLibraries(count);
+	}
+	
+	public Library getLibrary(Long id) {
+		return libraryDao.getLibrary(id);
 	}
 
 }
